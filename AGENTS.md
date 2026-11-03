@@ -1,7 +1,7 @@
 # Story Studio 작업 안내
 
 - README.md, CONTRIBUTING.md와 해당 Issue/PR의 범위를 먼저 읽습니다.
-- `dist/`는 빌드 산출물이 아니라 현재 직접 편집하는 정적 소스입니다.
+- `public/`는 기존 편집 UI, `app/`는 API/MCP 경로, `lib/story/`는 공통 작품 로직입니다. `dist/`는 생성되는 배포 산출물입니다.
 - `npm run check`로 확인하고 변경한 사용자 흐름에 맞춰 검증합니다.
 - 기존 작품 모델, `.story` 파일 호환, Story/Comic/Plan 판 분리를 보존합니다.
 - 이미지 변경으로 이야기 사건을 자동 변경하거나 기존 영상 계획을 덮어쓰지 않습니다.
