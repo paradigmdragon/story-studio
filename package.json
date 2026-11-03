@@ -1,0 +1,12 @@
+{
+  "name": "story-studio",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Story-first comic and video planning workspace",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "python3 -m http.server 4317 --bind 127.0.0.1 --directory dist",
+    "check": "node --check dist/app.js && node scripts/check-source.mjs"
+  }
+}
