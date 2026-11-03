@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1793678890674,
+      "tag": "0000_illegal_stark_industries",
+      "breakpoints": true
+    }
+  ]
+}

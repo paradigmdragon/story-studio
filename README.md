@@ -19,33 +19,35 @@
 - 컷에서 영상 계획 만들기: 길이·구도·움직임·소리
 - 이야기·만화·영상 계획의 판 분리 및 이전 판 경고
 
-현재는 정적 HTML/CSS/JavaScript 프로토타입입니다. 글을 컷으로 나누는 과정은 로컬 규칙에 따른 초안 구성이며 실시간 AI 이미지·영상 생성은 연결되어 있지 않습니다. 작품은 현재 브라우저에 저장되며 계정 간 공동 편집·클라우드 저장은 아직 없습니다.
+현재 UI는 기존 HTML/CSS/JavaScript를 유지하고, Vinext/Cloudflare Worker의 계정 저장 API와 MCP를 추가했습니다. 글을 컷으로 나누는 과정은 로컬 규칙에 따른 초안 구성이며 실시간 AI 이미지·영상 생성은 연결되어 있지 않습니다. 브라우저 작품은 기존대로 유지됩니다. 계정에 저장하면 Site DB와 GPT 도구가 같은 작품을 사용합니다. 실시간 다중 사용자 공동 편집은 제공하지 않습니다.
 
 ## 시작하기
 
-Node.js 22 이상과 Python 3이 필요합니다. 외부 패키지를 설치할 필요는 없습니다.
+Node.js 22.13 이상이 필요합니다. npm ci로 의존성을 설치합니다. 로컬 D1 준비와 채팅 연결은 [구현 안내](docs/chat-workspace.md)를 참고하세요.
 
 ```sh
 git clone https://github.com/paradigmdragon/story-studio.git
 cd story-studio
+npm ci
 npm run check
+npm run build
 npm run dev
 ```
 
-브라우저에서 <http://127.0.0.1:4317>을 엽니다. 종료하려면 터미널에서 Ctrl+C를 누릅니다.
+브라우저에서 <http://127.0.0.1:5173>을 엽니다. 종료하려면 터미널에서 Ctrl+C를 누릅니다.
 
 ## 소스 구조
 
 | 경로 | 역할 |
 | --- | --- |
-| `dist/index.html` | 화면의 기본 구조 |
-| `dist/app.js` | 작품 모델·편집·저장·Reader·영상 계획 |
-| `dist/style.css` | 반응형 레이아웃과 시각 디자인 |
-| `dist/*.jpg` | 예시 만화 이미지 |
+| `public/index.html` | 화면의 기본 구조 |
+| `public/app.js` | 작품 모델·편집·저장·Reader·영상 계획 |
+| `public/style.css` | 반응형 레이아웃과 시각 디자인 |
+| `public/*.jpg` | 예시 만화 이미지 |
 | `.openai/hosting.json` | 기존 Sites 프로젝트와 정적 배포 경로 |
 | `scripts/check-source.mjs` | 필수 자산·HTML 참조·호스팅 설정 검사 |
 
-빌드 과정이 없어 `dist/`가 직접 수정하는 소스입니다. 구조 정리를 이유로 기존 데이터 계약을 바꾸지 않습니다.
+public/는 기존 UI 소스, app/는 API와 MCP, lib/story/는 공통 작품 로직입니다. dist/는 빌드되는 배포 산출물입니다. 기존 작품 파일과 원본·만화·영상 계획 모델은 유지합니다.
 
 ## 다음 목표: 손잡고 · FilmCraft 연결
 
